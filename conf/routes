@@ -6,6 +6,10 @@ GET         /admin/reload                          controllers.Admin.reload()
 GET         /admin/url/:id/edit                    controllers.Application.editURLForm(id: Integer)
 POST        /login                                 controllers.Application.logIn()
 
+#schedule FSiR
+GET         /schedule/fsir/reload                  controllers.ScheduleClass.reloadFSiR()
+GET         /schedule/fsir                         controllers.ScheduleClass.FSiR()
+
 #Lessons
 POST        /lesson                                controllers.Application.insertLessons()
 POST        /smartSearch                           controllers.Application.smartSearch()
@@ -16,7 +20,7 @@ POST        /admin/url/delete                      controllers.Application.delet
 POST        /admin/url/edit                        controllers.Application.editURL()
 
 #API
-GET         /api/lessons                           controllers.ClientAPI.findLessons(groupNumber, day, hours, lecture, instructor, room: String)
+GET         /api/lessons                           controllers.ClientAPI.findLessons(groupNumber, faculty: String)
 GET         /api/table                             controllers.MathFacAPI.smartSearch(parameters: String)
 GET         /api/instructor/:instructor.ics        controllers.Application.instructorCalendar(instructor: String)
 

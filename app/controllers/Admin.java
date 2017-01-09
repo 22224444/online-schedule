@@ -46,5 +46,9 @@ public class Admin extends Controller {
                 },
                 Akka.system().dispatcher()
         );
+        try {
+            ScheduleClass.reloadFSiR();
+        } catch (Exception ignored) {}
+
     }
 }
