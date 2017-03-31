@@ -1,8 +1,10 @@
 GET         /assets/*file                          controllers.Assets.at(path="/public", file)
 GET         /                                      controllers.App.index()
+GET         /instructor                            controllers.App.instructorSchedule()
+GET         /group                                 controllers.App.groupSchedule()
 GET         /signin                                controllers.Application.signInPage()
 GET         /admin/                                controllers.Application.adminPage()
-GET         /admin/reload                          controllers.Admin.reload()
+GET         /admin/reload                          controllers.App.startReload()
 GET         /admin/url/:id/edit                    controllers.Application.editURLForm(id: Integer)
 POST        /login                                 controllers.Application.logIn()
 
@@ -18,11 +20,15 @@ POST        /smartSearch                           controllers.Application.smart
 POST        /admin/url/insert                      controllers.Application.insertURL()
 POST        /admin/url/delete                      controllers.Application.deleteURL(id: Integer)
 POST        /admin/url/edit                        controllers.Application.editURL()
+#GET         /test                                  controllers.App.startReload()
 
 #API
 GET         /api/lessons                           controllers.ClientAPI.findLessons(groupNumber, faculty: String)
+GET         /api/instructors                       controllers.API.instructors()
+#GET         /api/lessons                           controllers.API.lessons()
 GET         /api/table                             controllers.MathFacAPI.smartSearch(parameters: String)
-GET         /api/instructor/:instructor.ics        controllers.Application.instructorCalendar(instructor: String)
+GET         /api/instructor/:instructor.ics        controllers.App.instructorCalendar(instructor: String)
+GET         /api/group/:group.ics                  controllers.App.groupCalendar(group: String)
 
 GET         /support/addAdmin                      controllers.Support.addAdmin()
 

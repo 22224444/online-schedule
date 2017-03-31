@@ -4,7 +4,10 @@ package parser;
 import java.io.*;
 import java.net.URL;
 import java.util.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
+import models.WeekDays;
 import org.apache.poi.hssf.usermodel.HSSFCell;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
@@ -22,13 +25,23 @@ public abstract class Parser <T>{
 
     public abstract List<T> parseStream(InputStream in) throws IOException, Exception;
 
-
     public abstract List<T> parseSheet(HSSFSheet sheet) throws Exception;
 
     private static boolean isUpperLowerWeekPair(Lesson lesson1, Lesson lesson2) {
         return Objects.equals(lesson1.getFromHours(), lesson2.getFromHours()) && Objects.equals(lesson1.getFromMinutes(), lesson2.getFromMinutes()) &&
                 lesson1.getGroupNumber().equals(lesson2.getGroupNumber()) && Objects.equals(lesson1.getDayOfWeek(), lesson2.getDayOfWeek())
                 && !lesson1.getLecture().contains("по выбору") && !lesson2.getLecture().contains("по выбору");
+    }
+
+    public static List<String> days(String s){
+        String[] all = s.split("[,\\s]+");
+        List<String> ret = new ArrayList<>();
+        for (String a : all) {
+            if (a.trim().length()==5){
+                ret.add(a.trim());
+            }
+        }
+        return ret;
     }
 
     private static boolean endOfColumns(int x, int y, String[][] dataBase) {
@@ -79,6 +92,7 @@ public abstract class Parser <T>{
             return dataBase[x + 1][y];
         }
     }
+
     private static String getGroupName(int x, int y, String[][] dataBase) {
         if (dataBase[x][y] != null) {
             if (isGroupTitle(dataBase[x][y])) {

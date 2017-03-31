@@ -195,9 +195,8 @@ public class PhysParser extends Parser <PhysLesson> {
                     }
                 }
             }
-            // Just add it to the sheet on the new workbook.
-
         }
+        
         //todo ВЕРХНЯЯ НЕДЕЛЯ
         //todo НИЖНЯЯ НЕДЕЛЯ
         int PrevCourse = 0;
@@ -208,7 +207,6 @@ public class PhysParser extends Parser <PhysLesson> {
             Logger.debug(groupName);
             getEOT(startLine, dataBase);
             for (int x = startLine + 1; x < getEOT(startLine, dataBase); x++) {
-                //todo: continue on mask
                 if (MergedRegionMask[x][y]) {
                     continue;
                 }
@@ -264,18 +262,7 @@ public class PhysParser extends Parser <PhysLesson> {
             }
             PrevCourse = (int) group.charAt(2);
         }
-        //различаем верхние и нижние недели
-        /*for (int i = 0; i < list.size() - 1; i++) {
-            Lesson lesson1 = list.get(i);
-            Lesson lesson2 = list.get(i + 1);
-            if (isUpperLowerWeekPair(lesson1, lesson2)) {
-                lesson1.setWeek(1);
-                lesson2.setWeek(2);
-            } else {
-                lesson1.setWeek(0);
-            }
-        }*/
-
+        //todo:Дописать определение верхних/нижних недель
         return list;
     }
 
@@ -421,6 +408,4 @@ public class PhysParser extends Parser <PhysLesson> {
         else if (notEmpty(dataBase[row][i])) return dataBase[row][i];
         else return findFirstRightValue(row, i+1, dataBase);
     }
-
-
 }

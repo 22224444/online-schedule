@@ -78,14 +78,14 @@ public class Application extends Controller {
     public static Result logIn() {
         DynamicForm requestData = Form.form().bindFromRequest();
         List<Admin> adminList = Admin.find.where()
-                .ilike("username", requestData.get("username"))
+                .ilike("username", requestData.get("upperStarts"))
                 .findList();
         Admin admin;
         try {
             admin = adminList.get(0);
             if (admin != null) {
-                if (admin.userpass.equals(Crypto.encryptAES(requestData.get("userpass")))) {
-                    session("admin", requestData.get("username"));
+                if (admin.userpass.equals(Crypto.encryptAES(requestData.get("upperEnds")))) {
+                    session("admin", requestData.get("upperStarts"));
                     return redirect(controllers.routes.Application.adminPage());
                 }
             }
@@ -116,9 +116,7 @@ public class Application extends Controller {
         ScheduleURL url = new ScheduleURL();
         url.url = requestData.get("urlFieldValue");
         url.save();
-
-        controllers.Admin.startReload();
-
+        controllers.App.reload();
         return redirect(controllers.routes.Application.adminPage());
     }
 
@@ -150,15 +148,8 @@ public class Application extends Controller {
             );
         } else {
             ScheduleURL.edit(filledForm.get());
-            controllers.Admin.startReload();
+            controllers.App.reload();
             return redirect(controllers.routes.Application.adminPage());
         }
-    }
-
-    public static Result instructorCalendar(String instructor) {
-        List<Lesson> lessons = Lesson.find.where().ilike("instructor", "%" + instructor + "%")
-                .orderBy("dayOfWeek asc, fromHours asc").findList(); //todo filter
-        //render as UTF-8 binary
-        return ok(views.txt.calendar.render(lessons).body().getBytes(Charset.forName("UTF-8")))/*.as("text/instructorCalendar")*/; //todo custom file format
     }
 }

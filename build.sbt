@@ -1,4 +1,10 @@
+import com.github.play2war.plugin._
+
 name := """schedule"""
+
+Play2WarPlugin.play2WarSettings
+
+Play2WarKeys.servletVersion := "3.1"
 
 version := "1.0-SNAPSHOT"
 
@@ -14,3 +20,10 @@ libraryDependencies ++= Seq(
   javaWs,
   "org.jsoup" % "jsoup" % "1.10.2"
 )
+
+libraryDependencies += "postgresql" % "postgresql" % "9.1-901-1.jdbc4"
+
+libraryDependencies += "net.ruippeixotog" %% "scala-scraper" % "1.2.0"
+
+
+herokuAppName in Compile := "schedule-imei-isu"

@@ -1,0 +1,37 @@
+@(lessons: List[Lesson])BEGIN:VCALENDAR
+PRODID:-//Irkutsk State University//Education Schedule 1.0//EN
+VERSION:2.0
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME: Экспериментальное расписание занятий в ИМЭИ ИГУ
+X-WR-CALNAME: Экспериментальное расписание занятий в ИМЭИ ИГУ
+X-WR-TIMEZONE:Asia/Irkutsk
+X-WR-CALDESC:
+BEGIN:VTIMEZONE
+TZID:Asia/Irkutsk
+X-LIC-LOCATION:Asia/Irkutsk
+BEGIN:STANDARD
+TZOFFSETFROM:+0800
+TZOFFSETTO:+0800
+TZNAME:+08
+DTSTART:19700101T000000
+END:STANDARD
+END:VTIMEZONE@for(lesson <- lessons) {
+BEGIN:VEVENT
+UID:@lesson.getId
+DTSTAMP:@lesson.getNextFrom
+ORGANIZER;CN=Vladimir Ulyanov:MAILTO:ulyanov@@isu.ru
+DTSTART;TZID=Asia/Irkutsk:@lesson.getNextFrom
+DTEND;TZID=Asia/Irkutsk:@lesson.getNextTo
+SUMMARY:@lesson.getLecture
+DESCRIPTION:Занятия по предмету "@lesson.getLecture" у преподавателя @lesson.getInstructor
+LOCATION:@lesson.getRoom
+RRULE:FREQ=WEEKLY;INTERVAL=1
+TRANSP:OPAQUE
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Следующее занятие через 10 минут
+TRIGGER:-P0DT0H10M0S
+END:VALARM
+END:VEVENT}
+END:VCALENDAR

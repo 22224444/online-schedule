@@ -1,7 +1,5 @@
 package models;
 
-import java.util.*;
-
 import com.avaje.ebean.Ebean;
 import com.avaje.ebean.SqlUpdate;
 import play.db.ebean.*;
@@ -42,5 +40,4 @@ public class Admin extends Model {
     }
 
   }
-
 }

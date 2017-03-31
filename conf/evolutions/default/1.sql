@@ -69,9 +69,6 @@ create table imeilesson (
 
 create table lesson (
   id                        integer not null,
-  every_week                integer,
-  upper_week                integer,
-  lower_week                integer,
   group_number              varchar(255),
   group_name                varchar(255),
   day_of_week               integer,
@@ -111,6 +108,15 @@ create table schedule_url (
   constraint pk_schedule_url primary key (id))
 ;
 
+create table week_days (
+  id                        integer not null,
+  upper_starts              varchar(255),
+  upper_ends                varchar(255),
+  lower_starts              varchar(255),
+  lower_ends                varchar(255),
+  constraint pk_week_days primary key (id))
+;
+
 create sequence abstract_lesson_seq;
 
 create sequence admin_seq;
@@ -124,6 +130,8 @@ create sequence lesson_seq;
 create sequence phys_lesson_seq;
 
 create sequence schedule_url_seq;
+
+create sequence week_days_seq;
 
 
 
@@ -146,6 +154,8 @@ drop table if exists phys_lesson;
 
 drop table if exists schedule_url;
 
+drop table if exists week_days;
+
 SET REFERENTIAL_INTEGRITY TRUE;
 
 drop sequence if exists abstract_lesson_seq;
@@ -161,4 +171,6 @@ drop sequence if exists lesson_seq;
 drop sequence if exists phys_lesson_seq;
 
 drop sequence if exists schedule_url_seq;
+
+drop sequence if exists week_days_seq;
 

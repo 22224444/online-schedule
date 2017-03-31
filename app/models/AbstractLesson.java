@@ -245,22 +245,4 @@ public abstract class AbstractLesson <T> extends Model {
     public void setWeek(Integer week) {
         this.week = week;
     }
-
-    /*public static Lesson from(parser.Lesson from) {
-        Lesson to = new Lesson();
-        to.setDayOfWeek(from.getDayOfWeek());
-        to.setWeek(from.getWeek());
-        to.setFromHours(from.getFromHours());
-        to.setFromMinutes(from.getFromMinutes());
-        to.setGroupNumber(from.getGroupNumber());
-        to.setGroupName(from.getGroupName());
-        to.setInstructor(from.getInstructor());
-        to.setLecture(from.getLecture());
-        to.setRoom(from.getRoom());
-        to.setToHours(from.getToHours());
-        to.setToMinutes(from.getToMinutes());
-        return to;
-    }*/
-
-
 }

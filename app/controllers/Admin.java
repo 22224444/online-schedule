@@ -1,9 +1,6 @@
 package controllers;
 
-import models.IMEILesson;
-import models.Lesson;
-import models.PhysLesson;
-import models.ScheduleURL;
+import models.*;
 import parser.IMEIParser;
 import parser.PhysParser;
 import play.Logger;
@@ -33,10 +30,11 @@ public class Admin extends Controller {
                         long before = System.currentTimeMillis();
                         List<ScheduleURL> urls = ScheduleURL.all();
                         Lesson.clearBase();
+                        IMEILesson.clearBase();
+                        PhysLesson.clearBase();
+                        FSiRLesson.clearBase();
                         for (ScheduleURL schedule : urls) {
                             try {
-                                //List<parser.Lesson> list;
-                               // List<T> list;
                                 if (schedule.url.contains("physdep")) {
                                     List<PhysLesson> list;
                                     PhysParser parser = new PhysParser();
@@ -50,9 +48,6 @@ public class Admin extends Controller {
                                     for (models.IMEILesson lesson : list)
                                         models.IMEILesson.from(lesson).save();
                                 }
-                               /* for (parser.Lesson lesson : list) {
-                                    models.Lesson.from(lesson).save();
-                                }*/
                             } catch (Exception e) {
                                 Logger.error("Can not parse the URL:" + schedule.url);
                             }

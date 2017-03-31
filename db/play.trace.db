@@ -101,3 +101,405 @@ TRUNCATE TABLE FSiRLesson [42102-175]
 org.h2.jdbc.JdbcSQLException: Таблица "FSIRLESSON" не найдена
 Table "FSIRLESSON" not found; SQL statement:
 TRUNCATE TABLE FSiRLesson [42102-175]
+04-01 01:26:31 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Таблица "PHYSLESSON" не найдена
+Table "PHYSLESSON" not found; SQL statement:
+TRUNCATE TABLE PhysLesson [42102-175]
+04-01 01:26:34 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Таблица "PHYSLESSON" не найдена
+Table "PHYSLESSON" not found; SQL statement:
+TRUNCATE TABLE PhysLesson [42102-175]
+04-01 01:27:00 jdbc[7]: exception
+org.h2.jdbc.JdbcSQLException: Столбец "UPPERSTARTS" не найден
+Column "UPPERSTARTS" not found; SQL statement:
+select t0.id c0, t0.username c1, t0.userpass c2 from admin t0 where lower(upperStarts) like ?  [42122-175]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:332)
+	at org.h2.message.DbException.get(DbException.java:172)
+	at org.h2.message.DbException.get(DbException.java:149)
+	at org.h2.expression.ExpressionColumn.optimize(ExpressionColumn.java:144)
+	at org.h2.expression.Function.optimize(Function.java:1929)
+	at org.h2.expression.CompareLike.optimize(CompareLike.java:86)
+	at org.h2.command.dml.Select.prepare(Select.java:813)
+	at org.h2.command.Parser.prepareCommand(Parser.java:240)
+	at org.h2.engine.Session.prepareLocal(Session.java:436)
+	at org.h2.engine.Session.prepareCommand(Session.java:379)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1138)
+	at org.h2.jdbc.JdbcPreparedStatement.<init>(JdbcPreparedStatement.java:70)
+	at org.h2.jdbc.JdbcConnection.prepareStatement(JdbcConnection.java:267)
+	at com.jolbox.bonecp.ConnectionHandle.prepareStatement(ConnectionHandle.java:1024)
+	at com.avaje.ebeaninternal.server.query.CQuery.prepareBindExecuteQueryWithOption(CQuery.java:391)
+	at com.avaje.ebeaninternal.server.query.CQuery.prepareBindExecuteQuery(CQuery.java:368)
+	at com.avaje.ebeaninternal.server.query.CQueryEngine.findMany(CQueryEngine.java:165)
+	at com.avaje.ebeaninternal.server.query.DefaultOrmQueryEngine.findMany(DefaultOrmQueryEngine.java:77)
+	at com.avaje.ebeaninternal.server.core.OrmQueryRequest.findList(OrmQueryRequest.java:263)
+	at com.avaje.ebeaninternal.server.core.DefaultServer.findList(DefaultServer.java:1502)
+	at com.avaje.ebeaninternal.server.querydefn.DefaultOrmQuery.findList(DefaultOrmQuery.java:890)
+	at com.avaje.ebeaninternal.util.DefaultExpressionList.findList(DefaultExpressionList.java:173)
+	at controllers.Application.logIn(Application.java:80)
+	at Routes$$anonfun$routes$1$$anonfun$applyOrElse$9$$anonfun$apply$9.apply(routes_routing.scala:256)
+	at Routes$$anonfun$routes$1$$anonfun$applyOrElse$9$$anonfun$apply$9.apply(routes_routing.scala:256)
+	at play.core.Router$HandlerInvokerFactory$$anon$4.resultCall(Router.scala:264)
+	at play.core.Router$HandlerInvokerFactory$JavaActionInvokerFactory$$anon$15$$anon$1.invocation(Router.scala:255)
+	at play.core.j.JavaAction$$anon$1.call(JavaAction.scala:55)
+	at play.GlobalSettings$1.call(GlobalSettings.java:67)
+	at play.core.j.JavaAction$$anonfun$11.apply(JavaAction.scala:82)
+	at play.core.j.JavaAction$$anonfun$11.apply(JavaAction.scala:82)
+	at scala.concurrent.impl.Future$PromiseCompletingRunnable.liftedTree1$1(Future.scala:24)
+	at scala.concurrent.impl.Future$PromiseCompletingRunnable.run(Future.scala:24)
+	at play.core.j.HttpExecutionContext$$anon$2.run(HttpExecutionContext.scala:40)
+	at play.api.libs.iteratee.Execution$trampoline$.execute(Execution.scala:46)
+	at play.core.j.HttpExecutionContext.execute(HttpExecutionContext.scala:32)
+	at scala.concurrent.impl.Future$.apply(Future.scala:31)
+	at scala.concurrent.Future$.apply(Future.scala:494)
+	at play.core.j.JavaAction$class.apply(JavaAction.scala:82)
+	at play.core.Router$HandlerInvokerFactory$JavaActionInvokerFactory$$anon$15$$anon$1.apply(Router.scala:252)
+	at play.api.mvc.Action$$anonfun$apply$1$$anonfun$apply$4$$anonfun$apply$5.apply(Action.scala:130)
+	at play.api.mvc.Action$$anonfun$apply$1$$anonfun$apply$4$$anonfun$apply$5.apply(Action.scala:130)
+	at play.utils.Threads$.withContextClassLoader(Threads.scala:21)
+	at play.api.mvc.Action$$anonfun$apply$1$$anonfun$apply$4.apply(Action.scala:129)
+	at play.api.mvc.Action$$anonfun$apply$1$$anonfun$apply$4.apply(Action.scala:128)
+	at scala.Option.map(Option.scala:146)
+	at play.api.mvc.Action$$anonfun$apply$1.apply(Action.scala:128)
+	at play.api.mvc.Action$$anonfun$apply$1.apply(Action.scala:121)
+	at play.api.libs.iteratee.Iteratee$$anonfun$mapM$1.apply(Iteratee.scala:483)
+	at play.api.libs.iteratee.Iteratee$$anonfun$mapM$1.apply(Iteratee.scala:483)
+	at play.api.libs.iteratee.Iteratee$$anonfun$flatMapM$1.apply(Iteratee.scala:519)
+	at play.api.libs.iteratee.Iteratee$$anonfun$flatMapM$1.apply(Iteratee.scala:519)
+	at play.api.libs.iteratee.Iteratee$$anonfun$flatMap$1$$anonfun$apply$14.apply(Iteratee.scala:496)
+	at play.api.libs.iteratee.Iteratee$$anonfun$flatMap$1$$anonfun$apply$14.apply(Iteratee.scala:496)
+	at scala.concurrent.impl.Future$PromiseCompletingRunnable.liftedTree1$1(Future.scala:24)
+	at scala.concurrent.impl.Future$PromiseCompletingRunnable.run(Future.scala:24)
+	at akka.dispatch.TaskInvocation.run(AbstractDispatcher.scala:41)
+	at akka.dispatch.ForkJoinExecutorConfigurator$AkkaForkJoinTask.exec(AbstractDispatcher.scala:393)
+	at scala.concurrent.forkjoin.ForkJoinTask.doExec(ForkJoinTask.java:260)
+	at scala.concurrent.forkjoin.ForkJoinPool$WorkQueue.runTask(ForkJoinPool.java:1339)
+	at scala.concurrent.forkjoin.ForkJoinPool.runWorker(ForkJoinPool.java:1979)
+	at scala.concurrent.forkjoin.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:107)
+04-01 01:27:53 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Таблица "PHYSLESSON" не найдена
+Table "PHYSLESSON" not found; SQL statement:
+TRUNCATE TABLE PhysLesson [42102-175]
+04-01 01:28:10 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Столбец "UPPERSTARTS" не найден
+Column "UPPERSTARTS" not found; SQL statement:
+select t0.id c0, t0.username c1, t0.userpass c2 from admin t0 where lower(upperStarts) like ?  [42122-175]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:332)
+	at org.h2.message.DbException.get(DbException.java:172)
+	at org.h2.message.DbException.get(DbException.java:149)
+	at org.h2.expression.ExpressionColumn.optimize(ExpressionColumn.java:144)
+	at org.h2.expression.Function.optimize(Function.java:1929)
+	at org.h2.expression.CompareLike.optimize(CompareLike.java:86)
+	at org.h2.command.dml.Select.prepare(Select.java:813)
+	at org.h2.command.Parser.prepareCommand(Parser.java:240)
+	at org.h2.engine.Session.prepareLocal(Session.java:436)
+	at org.h2.engine.Session.prepareCommand(Session.java:379)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1138)
+	at org.h2.jdbc.JdbcPreparedStatement.<init>(JdbcPreparedStatement.java:70)
+	at org.h2.jdbc.JdbcConnection.prepareStatement(JdbcConnection.java:267)
+	at com.jolbox.bonecp.ConnectionHandle.prepareStatement(ConnectionHandle.java:1024)
+	at com.avaje.ebeaninternal.server.query.CQuery.prepareBindExecuteQueryWithOption(CQuery.java:391)
+	at com.avaje.ebeaninternal.server.query.CQuery.prepareBindExecuteQuery(CQuery.java:368)
+	at com.avaje.ebeaninternal.server.query.CQueryEngine.findMany(CQueryEngine.java:165)
+	at com.avaje.ebeaninternal.server.query.DefaultOrmQueryEngine.findMany(DefaultOrmQueryEngine.java:77)
+	at com.avaje.ebeaninternal.server.core.OrmQueryRequest.findList(OrmQueryRequest.java:263)
+	at com.avaje.ebeaninternal.server.core.DefaultServer.findList(DefaultServer.java:1502)
+	at com.avaje.ebeaninternal.server.querydefn.DefaultOrmQuery.findList(DefaultOrmQuery.java:890)
+	at com.avaje.ebeaninternal.util.DefaultExpressionList.findList(DefaultExpressionList.java:173)
+	at controllers.Application.logIn(Application.java:80)
+	at Routes$$anonfun$routes$1$$anonfun$applyOrElse$9$$anonfun$apply$9.apply(routes_routing.scala:263)
+	at Routes$$anonfun$routes$1$$anonfun$applyOrElse$9$$anonfun$apply$9.apply(routes_routing.scala:263)
+	at play.core.Router$HandlerInvokerFactory$$anon$4.resultCall(Router.scala:264)
+	at play.core.Router$HandlerInvokerFactory$JavaActionInvokerFactory$$anon$15$$anon$1.invocation(Router.scala:255)
+	at play.core.j.JavaAction$$anon$1.call(JavaAction.scala:55)
+	at play.GlobalSettings$1.call(GlobalSettings.java:67)
+	at play.core.j.JavaAction$$anonfun$11.apply(JavaAction.scala:82)
+	at play.core.j.JavaAction$$anonfun$11.apply(JavaAction.scala:82)
+	at scala.concurrent.impl.Future$PromiseCompletingRunnable.liftedTree1$1(Future.scala:24)
+	at scala.concurrent.impl.Future$PromiseCompletingRunnable.run(Future.scala:24)
+	at play.core.j.HttpExecutionContext$$anon$2.run(HttpExecutionContext.scala:40)
+	at play.api.libs.iteratee.Execution$trampoline$.execute(Execution.scala:46)
+	at play.core.j.HttpExecutionContext.execute(HttpExecutionContext.scala:32)
+	at scala.concurrent.impl.Future$.apply(Future.scala:31)
+	at scala.concurrent.Future$.apply(Future.scala:494)
+	at play.core.j.JavaAction$class.apply(JavaAction.scala:82)
+	at play.core.Router$HandlerInvokerFactory$JavaActionInvokerFactory$$anon$15$$anon$1.apply(Router.scala:252)
+	at play.api.mvc.Action$$anonfun$apply$1$$anonfun$apply$4$$anonfun$apply$5.apply(Action.scala:130)
+	at play.api.mvc.Action$$anonfun$apply$1$$anonfun$apply$4$$anonfun$apply$5.apply(Action.scala:130)
+	at play.utils.Threads$.withContextClassLoader(Threads.scala:21)
+	at play.api.mvc.Action$$anonfun$apply$1$$anonfun$apply$4.apply(Action.scala:129)
+	at play.api.mvc.Action$$anonfun$apply$1$$anonfun$apply$4.apply(Action.scala:128)
+	at scala.Option.map(Option.scala:146)
+	at play.api.mvc.Action$$anonfun$apply$1.apply(Action.scala:128)
+	at play.api.mvc.Action$$anonfun$apply$1.apply(Action.scala:121)
+	at play.api.libs.iteratee.Iteratee$$anonfun$mapM$1.apply(Iteratee.scala:483)
+	at play.api.libs.iteratee.Iteratee$$anonfun$mapM$1.apply(Iteratee.scala:483)
+	at play.api.libs.iteratee.Iteratee$$anonfun$flatMapM$1.apply(Iteratee.scala:519)
+	at play.api.libs.iteratee.Iteratee$$anonfun$flatMapM$1.apply(Iteratee.scala:519)
+	at play.api.libs.iteratee.Iteratee$$anonfun$flatMap$1$$anonfun$apply$14.apply(Iteratee.scala:496)
+	at play.api.libs.iteratee.Iteratee$$anonfun$flatMap$1$$anonfun$apply$14.apply(Iteratee.scala:496)
+	at scala.concurrent.impl.Future$PromiseCompletingRunnable.liftedTree1$1(Future.scala:24)
+	at scala.concurrent.impl.Future$PromiseCompletingRunnable.run(Future.scala:24)
+	at akka.dispatch.TaskInvocation.run(AbstractDispatcher.scala:41)
+	at akka.dispatch.ForkJoinExecutorConfigurator$AkkaForkJoinTask.exec(AbstractDispatcher.scala:393)
+	at scala.concurrent.forkjoin.ForkJoinTask.doExec(ForkJoinTask.java:260)
+	at scala.concurrent.forkjoin.ForkJoinPool$WorkQueue.runTask(ForkJoinPool.java:1339)
+	at scala.concurrent.forkjoin.ForkJoinPool.runWorker(ForkJoinPool.java:1979)
+	at scala.concurrent.forkjoin.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:107)
+04-01 01:28:58 jdbc[5]: exception
+org.h2.jdbc.JdbcSQLException: Столбец "UPPERSTARTS" не найден
+Column "UPPERSTARTS" not found; SQL statement:
+select t0.id c0, t0.username c1, t0.userpass c2 from admin t0 where lower(upperStarts) like ?  [42122-175]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:332)
+	at org.h2.message.DbException.get(DbException.java:172)
+	at org.h2.message.DbException.get(DbException.java:149)
+	at org.h2.expression.ExpressionColumn.optimize(ExpressionColumn.java:144)
+	at org.h2.expression.Function.optimize(Function.java:1929)
+	at org.h2.expression.CompareLike.optimize(CompareLike.java:86)
+	at org.h2.command.dml.Select.prepare(Select.java:813)
+	at org.h2.command.Parser.prepareCommand(Parser.java:240)
+	at org.h2.engine.Session.prepareLocal(Session.java:436)
+	at org.h2.engine.Session.prepareCommand(Session.java:379)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1138)
+	at org.h2.jdbc.JdbcPreparedStatement.<init>(JdbcPreparedStatement.java:70)
+	at org.h2.jdbc.JdbcConnection.prepareStatement(JdbcConnection.java:267)
+	at com.jolbox.bonecp.ConnectionHandle.prepareStatement(ConnectionHandle.java:1024)
+	at com.avaje.ebeaninternal.server.query.CQuery.prepareBindExecuteQueryWithOption(CQuery.java:391)
+	at com.avaje.ebeaninternal.server.query.CQuery.prepareBindExecuteQuery(CQuery.java:368)
+	at com.avaje.ebeaninternal.server.query.CQueryEngine.findMany(CQueryEngine.java:165)
+	at com.avaje.ebeaninternal.server.query.DefaultOrmQueryEngine.findMany(DefaultOrmQueryEngine.java:77)
+	at com.avaje.ebeaninternal.server.core.OrmQueryRequest.findList(OrmQueryRequest.java:263)
+	at com.avaje.ebeaninternal.server.core.DefaultServer.findList(DefaultServer.java:1502)
+	at com.avaje.ebeaninternal.server.querydefn.DefaultOrmQuery.findList(DefaultOrmQuery.java:890)
+	at com.avaje.ebeaninternal.util.DefaultExpressionList.findList(DefaultExpressionList.java:173)
+	at controllers.Application.logIn(Application.java:80)
+	at Routes$$anonfun$routes$1$$anonfun$applyOrElse$9$$anonfun$apply$9.apply(routes_routing.scala:263)
+	at Routes$$anonfun$routes$1$$anonfun$applyOrElse$9$$anonfun$apply$9.apply(routes_routing.scala:263)
+	at play.core.Router$HandlerInvokerFactory$$anon$4.resultCall(Router.scala:264)
+	at play.core.Router$HandlerInvokerFactory$JavaActionInvokerFactory$$anon$15$$anon$1.invocation(Router.scala:255)
+	at play.core.j.JavaAction$$anon$1.call(JavaAction.scala:55)
+	at play.GlobalSettings$1.call(GlobalSettings.java:67)
+	at play.core.j.JavaAction$$anonfun$11.apply(JavaAction.scala:82)
+	at play.core.j.JavaAction$$anonfun$11.apply(JavaAction.scala:82)
+	at scala.concurrent.impl.Future$PromiseCompletingRunnable.liftedTree1$1(Future.scala:24)
+	at scala.concurrent.impl.Future$PromiseCompletingRunnable.run(Future.scala:24)
+	at play.core.j.HttpExecutionContext$$anon$2.run(HttpExecutionContext.scala:40)
+	at play.api.libs.iteratee.Execution$trampoline$.execute(Execution.scala:46)
+	at play.core.j.HttpExecutionContext.execute(HttpExecutionContext.scala:32)
+	at scala.concurrent.impl.Future$.apply(Future.scala:31)
+	at scala.concurrent.Future$.apply(Future.scala:494)
+	at play.core.j.JavaAction$class.apply(JavaAction.scala:82)
+	at play.core.Router$HandlerInvokerFactory$JavaActionInvokerFactory$$anon$15$$anon$1.apply(Router.scala:252)
+	at play.api.mvc.Action$$anonfun$apply$1$$anonfun$apply$4$$anonfun$apply$5.apply(Action.scala:130)
+	at play.api.mvc.Action$$anonfun$apply$1$$anonfun$apply$4$$anonfun$apply$5.apply(Action.scala:130)
+	at play.utils.Threads$.withContextClassLoader(Threads.scala:21)
+	at play.api.mvc.Action$$anonfun$apply$1$$anonfun$apply$4.apply(Action.scala:129)
+	at play.api.mvc.Action$$anonfun$apply$1$$anonfun$apply$4.apply(Action.scala:128)
+	at scala.Option.map(Option.scala:146)
+	at play.api.mvc.Action$$anonfun$apply$1.apply(Action.scala:128)
+	at play.api.mvc.Action$$anonfun$apply$1.apply(Action.scala:121)
+	at play.api.libs.iteratee.Iteratee$$anonfun$mapM$1.apply(Iteratee.scala:483)
+	at play.api.libs.iteratee.Iteratee$$anonfun$mapM$1.apply(Iteratee.scala:483)
+	at play.api.libs.iteratee.Iteratee$$anonfun$flatMapM$1.apply(Iteratee.scala:519)
+	at play.api.libs.iteratee.Iteratee$$anonfun$flatMapM$1.apply(Iteratee.scala:519)
+	at play.api.libs.iteratee.Iteratee$$anonfun$flatMap$1$$anonfun$apply$14.apply(Iteratee.scala:496)
+	at play.api.libs.iteratee.Iteratee$$anonfun$flatMap$1$$anonfun$apply$14.apply(Iteratee.scala:496)
+	at scala.concurrent.impl.Future$PromiseCompletingRunnable.liftedTree1$1(Future.scala:24)
+	at scala.concurrent.impl.Future$PromiseCompletingRunnable.run(Future.scala:24)
+	at akka.dispatch.TaskInvocation.run(AbstractDispatcher.scala:41)
+	at akka.dispatch.ForkJoinExecutorConfigurator$AkkaForkJoinTask.exec(AbstractDispatcher.scala:393)
+	at scala.concurrent.forkjoin.ForkJoinTask.doExec(ForkJoinTask.java:260)
+	at scala.concurrent.forkjoin.ForkJoinPool$WorkQueue.runTask(ForkJoinPool.java:1339)
+	at scala.concurrent.forkjoin.ForkJoinPool.runWorker(ForkJoinPool.java:1979)
+	at scala.concurrent.forkjoin.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:107)
+04-01 01:30:41 jdbc[6]: exception
+org.h2.jdbc.JdbcSQLException: Столбец "UPPERSTARTS" не найден
+Column "UPPERSTARTS" not found; SQL statement:
+select t0.id c0, t0.username c1, t0.userpass c2 from admin t0 where lower(upperStarts) like ?  [42122-175]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:332)
+	at org.h2.message.DbException.get(DbException.java:172)
+	at org.h2.message.DbException.get(DbException.java:149)
+	at org.h2.expression.ExpressionColumn.optimize(ExpressionColumn.java:144)
+	at org.h2.expression.Function.optimize(Function.java:1929)
+	at org.h2.expression.CompareLike.optimize(CompareLike.java:86)
+	at org.h2.command.dml.Select.prepare(Select.java:813)
+	at org.h2.command.Parser.prepareCommand(Parser.java:240)
+	at org.h2.engine.Session.prepareLocal(Session.java:436)
+	at org.h2.engine.Session.prepareCommand(Session.java:379)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1138)
+	at org.h2.jdbc.JdbcPreparedStatement.<init>(JdbcPreparedStatement.java:70)
+	at org.h2.jdbc.JdbcConnection.prepareStatement(JdbcConnection.java:267)
+	at com.jolbox.bonecp.ConnectionHandle.prepareStatement(ConnectionHandle.java:1024)
+	at com.avaje.ebeaninternal.server.query.CQuery.prepareBindExecuteQueryWithOption(CQuery.java:391)
+	at com.avaje.ebeaninternal.server.query.CQuery.prepareBindExecuteQuery(CQuery.java:368)
+	at com.avaje.ebeaninternal.server.query.CQueryEngine.findMany(CQueryEngine.java:165)
+	at com.avaje.ebeaninternal.server.query.DefaultOrmQueryEngine.findMany(DefaultOrmQueryEngine.java:77)
+	at com.avaje.ebeaninternal.server.core.OrmQueryRequest.findList(OrmQueryRequest.java:263)
+	at com.avaje.ebeaninternal.server.core.DefaultServer.findList(DefaultServer.java:1502)
+	at com.avaje.ebeaninternal.server.querydefn.DefaultOrmQuery.findList(DefaultOrmQuery.java:890)
+	at com.avaje.ebeaninternal.util.DefaultExpressionList.findList(DefaultExpressionList.java:173)
+	at controllers.Application.logIn(Application.java:80)
+	at Routes$$anonfun$routes$1$$anonfun$applyOrElse$9$$anonfun$apply$9.apply(routes_routing.scala:263)
+	at Routes$$anonfun$routes$1$$anonfun$applyOrElse$9$$anonfun$apply$9.apply(routes_routing.scala:263)
+	at play.core.Router$HandlerInvokerFactory$$anon$4.resultCall(Router.scala:264)
+	at play.core.Router$HandlerInvokerFactory$JavaActionInvokerFactory$$anon$15$$anon$1.invocation(Router.scala:255)
+	at play.core.j.JavaAction$$anon$1.call(JavaAction.scala:55)
+	at play.GlobalSettings$1.call(GlobalSettings.java:67)
+	at play.core.j.JavaAction$$anonfun$11.apply(JavaAction.scala:82)
+	at play.core.j.JavaAction$$anonfun$11.apply(JavaAction.scala:82)
+	at scala.concurrent.impl.Future$PromiseCompletingRunnable.liftedTree1$1(Future.scala:24)
+	at scala.concurrent.impl.Future$PromiseCompletingRunnable.run(Future.scala:24)
+	at play.core.j.HttpExecutionContext$$anon$2.run(HttpExecutionContext.scala:40)
+	at play.api.libs.iteratee.Execution$trampoline$.execute(Execution.scala:46)
+	at play.core.j.HttpExecutionContext.execute(HttpExecutionContext.scala:32)
+	at scala.concurrent.impl.Future$.apply(Future.scala:31)
+	at scala.concurrent.Future$.apply(Future.scala:494)
+	at play.core.j.JavaAction$class.apply(JavaAction.scala:82)
+	at play.core.Router$HandlerInvokerFactory$JavaActionInvokerFactory$$anon$15$$anon$1.apply(Router.scala:252)
+	at play.api.mvc.Action$$anonfun$apply$1$$anonfun$apply$4$$anonfun$apply$5.apply(Action.scala:130)
+	at play.api.mvc.Action$$anonfun$apply$1$$anonfun$apply$4$$anonfun$apply$5.apply(Action.scala:130)
+	at play.utils.Threads$.withContextClassLoader(Threads.scala:21)
+	at play.api.mvc.Action$$anonfun$apply$1$$anonfun$apply$4.apply(Action.scala:129)
+	at play.api.mvc.Action$$anonfun$apply$1$$anonfun$apply$4.apply(Action.scala:128)
+	at scala.Option.map(Option.scala:146)
+	at play.api.mvc.Action$$anonfun$apply$1.apply(Action.scala:128)
+	at play.api.mvc.Action$$anonfun$apply$1.apply(Action.scala:121)
+	at play.api.libs.iteratee.Iteratee$$anonfun$mapM$1.apply(Iteratee.scala:483)
+	at play.api.libs.iteratee.Iteratee$$anonfun$mapM$1.apply(Iteratee.scala:483)
+	at play.api.libs.iteratee.Iteratee$$anonfun$flatMapM$1.apply(Iteratee.scala:519)
+	at play.api.libs.iteratee.Iteratee$$anonfun$flatMapM$1.apply(Iteratee.scala:519)
+	at play.api.libs.iteratee.Iteratee$$anonfun$flatMap$1$$anonfun$apply$14.apply(Iteratee.scala:496)
+	at play.api.libs.iteratee.Iteratee$$anonfun$flatMap$1$$anonfun$apply$14.apply(Iteratee.scala:496)
+	at scala.concurrent.impl.Future$PromiseCompletingRunnable.liftedTree1$1(Future.scala:24)
+	at scala.concurrent.impl.Future$PromiseCompletingRunnable.run(Future.scala:24)
+	at akka.dispatch.TaskInvocation.run(AbstractDispatcher.scala:41)
+	at akka.dispatch.ForkJoinExecutorConfigurator$AkkaForkJoinTask.exec(AbstractDispatcher.scala:393)
+	at scala.concurrent.forkjoin.ForkJoinTask.doExec(ForkJoinTask.java:260)
+	at scala.concurrent.forkjoin.ForkJoinPool$WorkQueue.runTask(ForkJoinPool.java:1339)
+	at scala.concurrent.forkjoin.ForkJoinPool.runWorker(ForkJoinPool.java:1979)
+	at scala.concurrent.forkjoin.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:107)
+04-01 01:33:16 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Таблица "PHYSLESSON" не найдена
+Table "PHYSLESSON" not found; SQL statement:
+TRUNCATE TABLE PhysLesson [42102-175]
+04-01 01:36:03 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Таблица "PHYSLESSON" не найдена
+Table "PHYSLESSON" not found; SQL statement:
+TRUNCATE TABLE PhysLesson [42102-175]
+04-01 01:37:45 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Таблица "PHYSLESSON" не найдена
+Table "PHYSLESSON" not found; SQL statement:
+TRUNCATE TABLE PhysLesson [42102-175]
+04-01 01:37:55 jdbc[7]: exception
+org.h2.jdbc.JdbcSQLException: Столбец "UPPERSTARTS" не найден
+Column "UPPERSTARTS" not found; SQL statement:
+select t0.id c0, t0.username c1, t0.userpass c2 from admin t0 where lower(upperStarts) like ?  [42122-175]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:332)
+	at org.h2.message.DbException.get(DbException.java:172)
+	at org.h2.message.DbException.get(DbException.java:149)
+	at org.h2.expression.ExpressionColumn.optimize(ExpressionColumn.java:144)
+	at org.h2.expression.Function.optimize(Function.java:1929)
+	at org.h2.expression.CompareLike.optimize(CompareLike.java:86)
+	at org.h2.command.dml.Select.prepare(Select.java:813)
+	at org.h2.command.Parser.prepareCommand(Parser.java:240)
+	at org.h2.engine.Session.prepareLocal(Session.java:436)
+	at org.h2.engine.Session.prepareCommand(Session.java:379)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1138)
+	at org.h2.jdbc.JdbcPreparedStatement.<init>(JdbcPreparedStatement.java:70)
+	at org.h2.jdbc.JdbcConnection.prepareStatement(JdbcConnection.java:267)
+	at com.jolbox.bonecp.ConnectionHandle.prepareStatement(ConnectionHandle.java:1024)
+	at com.avaje.ebeaninternal.server.query.CQuery.prepareBindExecuteQueryWithOption(CQuery.java:391)
+	at com.avaje.ebeaninternal.server.query.CQuery.prepareBindExecuteQuery(CQuery.java:368)
+	at com.avaje.ebeaninternal.server.query.CQueryEngine.findMany(CQueryEngine.java:165)
+	at com.avaje.ebeaninternal.server.query.DefaultOrmQueryEngine.findMany(DefaultOrmQueryEngine.java:77)
+	at com.avaje.ebeaninternal.server.core.OrmQueryRequest.findList(OrmQueryRequest.java:263)
+	at com.avaje.ebeaninternal.server.core.DefaultServer.findList(DefaultServer.java:1502)
+	at com.avaje.ebeaninternal.server.querydefn.DefaultOrmQuery.findList(DefaultOrmQuery.java:890)
+	at com.avaje.ebeaninternal.util.DefaultExpressionList.findList(DefaultExpressionList.java:173)
+	at controllers.Application.logIn(Application.java:80)
+	at Routes$$anonfun$routes$1$$anonfun$applyOrElse$9$$anonfun$apply$9.apply(routes_routing.scala:263)
+	at Routes$$anonfun$routes$1$$anonfun$applyOrElse$9$$anonfun$apply$9.apply(routes_routing.scala:263)
+	at play.core.Router$HandlerInvokerFactory$$anon$4.resultCall(Router.scala:264)
+	at play.core.Router$HandlerInvokerFactory$JavaActionInvokerFactory$$anon$15$$anon$1.invocation(Router.scala:255)
+	at play.core.j.JavaAction$$anon$1.call(JavaAction.scala:55)
+	at play.GlobalSettings$1.call(GlobalSettings.java:67)
+	at play.core.j.JavaAction$$anonfun$11.apply(JavaAction.scala:82)
+	at play.core.j.JavaAction$$anonfun$11.apply(JavaAction.scala:82)
+	at scala.concurrent.impl.Future$PromiseCompletingRunnable.liftedTree1$1(Future.scala:24)
+	at scala.concurrent.impl.Future$PromiseCompletingRunnable.run(Future.scala:24)
+	at play.core.j.HttpExecutionContext$$anon$2.run(HttpExecutionContext.scala:40)
+	at play.api.libs.iteratee.Execution$trampoline$.execute(Execution.scala:46)
+	at play.core.j.HttpExecutionContext.execute(HttpExecutionContext.scala:32)
+	at scala.concurrent.impl.Future$.apply(Future.scala:31)
+	at scala.concurrent.Future$.apply(Future.scala:494)
+	at play.core.j.JavaAction$class.apply(JavaAction.scala:82)
+	at play.core.Router$HandlerInvokerFactory$JavaActionInvokerFactory$$anon$15$$anon$1.apply(Router.scala:252)
+	at play.api.mvc.Action$$anonfun$apply$1$$anonfun$apply$4$$anonfun$apply$5.apply(Action.scala:130)
+	at play.api.mvc.Action$$anonfun$apply$1$$anonfun$apply$4$$anonfun$apply$5.apply(Action.scala:130)
+	at play.utils.Threads$.withContextClassLoader(Threads.scala:21)
+	at play.api.mvc.Action$$anonfun$apply$1$$anonfun$apply$4.apply(Action.scala:129)
+	at play.api.mvc.Action$$anonfun$apply$1$$anonfun$apply$4.apply(Action.scala:128)
+	at scala.Option.map(Option.scala:146)
+	at play.api.mvc.Action$$anonfun$apply$1.apply(Action.scala:128)
+	at play.api.mvc.Action$$anonfun$apply$1.apply(Action.scala:121)
+	at play.api.libs.iteratee.Iteratee$$anonfun$mapM$1.apply(Iteratee.scala:483)
+	at play.api.libs.iteratee.Iteratee$$anonfun$mapM$1.apply(Iteratee.scala:483)
+	at play.api.libs.iteratee.Iteratee$$anonfun$flatMapM$1.apply(Iteratee.scala:519)
+	at play.api.libs.iteratee.Iteratee$$anonfun$flatMapM$1.apply(Iteratee.scala:519)
+	at play.api.libs.iteratee.Iteratee$$anonfun$flatMap$1$$anonfun$apply$14.apply(Iteratee.scala:496)
+	at play.api.libs.iteratee.Iteratee$$anonfun$flatMap$1$$anonfun$apply$14.apply(Iteratee.scala:496)
+	at scala.concurrent.impl.Future$PromiseCompletingRunnable.liftedTree1$1(Future.scala:24)
+	at scala.concurrent.impl.Future$PromiseCompletingRunnable.run(Future.scala:24)
+	at akka.dispatch.TaskInvocation.run(AbstractDispatcher.scala:41)
+	at akka.dispatch.ForkJoinExecutorConfigurator$AkkaForkJoinTask.exec(AbstractDispatcher.scala:393)
+	at scala.concurrent.forkjoin.ForkJoinTask.doExec(ForkJoinTask.java:260)
+	at scala.concurrent.forkjoin.ForkJoinPool$WorkQueue.runTask(ForkJoinPool.java:1339)
+	at scala.concurrent.forkjoin.ForkJoinPool.runWorker(ForkJoinPool.java:1979)
+	at scala.concurrent.forkjoin.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:107)
+04-01 01:39:41 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Таблица "PHYSLESSON" не найдена
+Table "PHYSLESSON" not found; SQL statement:
+TRUNCATE TABLE PhysLesson [42102-175]
+04-01 01:40:08 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Таблица "PHYSLESSON" не найдена
+Table "PHYSLESSON" not found; SQL statement:
+TRUNCATE TABLE PhysLesson [42102-175]
+04-01 01:40:32 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Таблица "PHYSLESSON" не найдена
+Table "PHYSLESSON" not found; SQL statement:
+TRUNCATE TABLE PhysLesson [42102-175]
+04-01 01:40:44 jdbc[6]: exception
+org.h2.jdbc.JdbcSQLException: Таблица "PHYSLESSON" не найдена
+Table "PHYSLESSON" not found; SQL statement:
+TRUNCATE TABLE PhysLesson [42102-175]
+04-01 01:42:57 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Таблица "PHYSLESSON" не найдена
+Table "PHYSLESSON" not found; SQL statement:
+TRUNCATE TABLE PhysLesson [42102-175]
+04-01 01:43:51 jdbc[7]: exception
+org.h2.jdbc.JdbcSQLException: Таблица "PHYSLESSON" не найдена
+Table "PHYSLESSON" not found; SQL statement:
+TRUNCATE TABLE PhysLesson [42102-175]
+04-01 01:44:02 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Таблица "PHYSLESSON" не найдена
+Table "PHYSLESSON" not found; SQL statement:
+TRUNCATE TABLE PhysLesson [42102-175]
+04-01 01:44:15 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Таблица "PHYSLESSON" не найдена
+Table "PHYSLESSON" not found; SQL statement:
+TRUNCATE TABLE PhysLesson [42102-175]
+04-01 01:46:23 jdbc[5]: exception
+org.h2.jdbc.JdbcSQLException: Таблица "PHYSLESSON" не найдена
+Table "PHYSLESSON" not found; SQL statement:
+TRUNCATE TABLE PhysLesson [42102-175]
+04-01 01:50:28 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Таблица "PHYSLESSON" не найдена
+Table "PHYSLESSON" not found; SQL statement:
+TRUNCATE TABLE PhysLesson [42102-175]
+04-01 01:55:27 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Таблица "PHYSLESSON" не найдена
+Table "PHYSLESSON" not found; SQL statement:
+TRUNCATE TABLE physlesson [42102-175]
+04-01 02:04:25 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Таблица "PHYSLESSON" не найдена
+Table "PHYSLESSON" not found; SQL statement:
+TRUNCATE TABLE physlesson [42102-175]
