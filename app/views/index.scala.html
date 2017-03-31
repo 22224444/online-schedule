@@ -1,4 +1,4 @@
-@(filterForm: play.api.data.Form[App.FilterData], lessons: List[Lesson], groups: Seq[String] = App.allGroups, instructors: Seq[String] = App.allInstructors)
+@(filterForm: play.api.data.Form[App.FilterData], lessons: List[IMEILesson], groups: Seq[String] = App.allGroups, instructors: Seq[String] = App.allInstructors)
 
 @main("Главная")("home") {
     <div id="content">

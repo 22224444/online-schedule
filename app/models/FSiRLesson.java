@@ -14,7 +14,7 @@ import static java.util.Calendar.*;
 
 
 @Entity
-public class FSiRLesson extends Model {
+public class FSiRLesson extends AbstractLesson <FSiRLesson> {
     public final int EVERY_WEEK = 0;
     public final int UPPER_WEEK = 1;
     public final int LOWER_WEEK = 2;
@@ -39,7 +39,7 @@ public class FSiRLesson extends Model {
             Integer.class, FSiRLesson.class
     );
 
-    public static List<FSiRLesson> all() {
+    public List<FSiRLesson> all() {
         return find.all();
     }
 

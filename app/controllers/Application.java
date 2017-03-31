@@ -1,5 +1,6 @@
 package controllers;
 
+import models.IMEILesson;
 import models.Lesson;
 import models.Admin;
 import models.ScheduleURL;
@@ -19,12 +20,12 @@ public class Application extends Controller {
 
     static Form<ScheduleURL> urlForm = form(ScheduleURL.class);
 
-    private static void foo(Map<Lesson, Integer> map, String field, String part) {
-        List<Lesson> lessonList = Lesson.find.where().ilike(field, "%" + part + "%")
+    private static void foo(Map<IMEILesson, Integer> map, String field, String part) {
+        List<IMEILesson> lessonList = IMEILesson.find.where().ilike(field, "%" + part + "%")
                 .orderBy("groupNumber asc, day asc, hours asc").findList();
 
         for (int j = 0; j < lessonList.size(); j++) {
-            Lesson key = lessonList.get(j);
+            IMEILesson key = lessonList.get(j);
             if (!map.containsKey(key)) {
                 map.put(key, 1);
             } else {
@@ -36,8 +37,8 @@ public class Application extends Controller {
     public static Result smartSearch() {
         DynamicForm requestData = Form.form().bindFromRequest();
         String[] parts = requestData.get("smartSearchField").trim().split(" ");
-        Map<Lesson, Integer> map = new LinkedHashMap<>();
-        List<Lesson> response = new ArrayList<>();
+        Map<IMEILesson, Integer> map = new LinkedHashMap<>();
+        List<IMEILesson> response = new ArrayList<>();
 
         for (int i = 0; i < parts.length; i++) {
             foo(map, "groupNumber", parts[i]);
@@ -48,7 +49,7 @@ public class Application extends Controller {
             foo(map, "room", parts[i]);
         }
 
-        for (Map.Entry<Lesson, Integer> pair : map.entrySet()) {
+        for (Map.Entry<IMEILesson, Integer> pair : map.entrySet()) {
             if (pair.getValue() >= parts.length) {
                 response.add(pair.getKey());
             }

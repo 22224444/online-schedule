@@ -14,7 +14,7 @@ import static java.util.Calendar.*;
 
 
 @Entity
-public class IMEILesson extends Model {
+public class IMEILesson extends AbstractLesson{
     public final int EVERY_WEEK = 0;
     public final int UPPER_WEEK = 1;
     public final int LOWER_WEEK = 2;
@@ -39,7 +39,7 @@ public class IMEILesson extends Model {
             Integer.class, IMEILesson.class
     );
 
-    public static List<IMEILesson> all() {
+    public List<IMEILesson> all() {
         return find.all();
     }
 

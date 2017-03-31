@@ -1,15 +1,17 @@
 package controllers;
 
+import models.IMEILesson;
 import models.Lesson;
+import models.PhysLesson;
 import models.ScheduleURL;
-import parser.Parser;
+import parser.IMEIParser;
+import parser.PhysParser;
 import play.Logger;
 import play.libs.Akka;
 import play.mvc.Controller;
 import play.mvc.*;
 import scala.concurrent.duration.Duration;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -33,11 +35,25 @@ public class Admin extends Controller {
                         Lesson.clearBase();
                         for (ScheduleURL schedule : urls) {
                             try {
-                                List<parser.Lesson> list = Parser.parseURL(new URL(schedule.url));
-                                for (parser.Lesson lesson : list) {
-                                    models.Lesson.from(lesson).save();
+                                //List<parser.Lesson> list;
+                               // List<T> list;
+                                if (schedule.url.contains("physdep")) {
+                                    List<PhysLesson> list;
+                                    PhysParser parser = new PhysParser();
+                                    list = parser.parseURL(new URL(schedule.url));
+                                    for (models.PhysLesson lesson : list)
+                                        models.PhysLesson.from(lesson).save();
+                                } else if (schedule.url.contains("math")) {
+                                    List<IMEILesson> list;
+                                    IMEIParser parser = new IMEIParser();
+                                    list = parser.parseURL(new URL(schedule.url));
+                                    for (models.IMEILesson lesson : list)
+                                        models.IMEILesson.from(lesson).save();
                                 }
-                            } catch (IOException e) {
+                               /* for (parser.Lesson lesson : list) {
+                                    models.Lesson.from(lesson).save();
+                                }*/
+                            } catch (Exception e) {
                                 Logger.error("Can not parse the URL:" + schedule.url);
                             }
                         }

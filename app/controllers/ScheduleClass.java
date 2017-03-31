@@ -128,7 +128,7 @@ public class ScheduleClass extends Controller {
     }
 
     public static Result FSiR() {
-        List<models.FSiRLesson> list = models.FSiRLesson.all();
+        List<models.FSiRLesson> list = new models.FSiRLesson().all();
         return ok(list.toString());
     }
 } 

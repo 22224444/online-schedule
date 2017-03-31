@@ -29,8 +29,9 @@
         <!--sidebar-menu-->
         <div id="sidebar"> <a href="#" class="visible-phone"><i class="icon icon-list"></i>Forms</a>
             <ul>
-                <li id="home" @if(menu.equals("home")){class="active"}><a href="@routes.App.index()"><i class="icon icon-calendar"></i> <span>Расписание ИМЭИ</span></a> </li>
-                <li id="group-calendar"><a href=""><i class="icon icon-list"></i>Расписание ФСиР</a></li>
+                <li id="home" @if(menu.equals("home")){class="active"}><a href="@routes.App.index()?scheduletype=IMEI"><i class="icon icon-calendar"></i> <span>Расписание ИМЭИ</span></a> </li>
+                <li id="group-calendar"><a href="@routes.App.index()?scheduletype=FSiR"><i class="icon icon-calendar"></i>Расписание ФСиР</a></li>
+                <li id="group-calenda"><a href="@routes.App.index()?scheduletype=Phys"><i class="icon icon-calendar"></i>Расписание Физического факультета ИГУ</a></li>
             </ul>
         </div>
         <!--close-left-menu-stats-sidebar-->

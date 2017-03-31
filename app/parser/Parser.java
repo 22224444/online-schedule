@@ -12,116 +12,18 @@ import org.apache.poi.poifs.filesystem.POIFSFileSystem;
 import play.Logger;
 
 
-public class Parser {
+public abstract class Parser <T>{
 
     @Deprecated
-    public static List<Lesson> parseFile(File file) throws IOException {
-        return parseStream(new FileInputStream(file));
-    }
+    public abstract List<T> parseFile(File file) throws IOException, Exception;
 
-    public static List<Lesson> parseURL(URL url) throws IOException {
-        return parseStream(url.openStream());
-    }
+    public abstract List<T> parseURL(URL url) throws IOException, Exception;
 
 
-    public static List<Lesson> parseStream(InputStream in) throws IOException {
-        List<Lesson> list = new ArrayList<Lesson>();
-        POIFSFileSystem fs = new POIFSFileSystem(in);
-        HSSFWorkbook workbook = new HSSFWorkbook(fs);
-
-        for (int i = 0; i < workbook.getNumberOfSheets(); i++) {
-            HSSFSheet sheet = workbook.getSheetAt(i);
-            list.addAll(parseSheet(sheet));
-            System.out.println("Sheet " + i + " processed");
-        }
-        return list;
-    }
+    public abstract List<T> parseStream(InputStream in) throws IOException, Exception;
 
 
-
-    private static List<Lesson> parseSheet(HSSFSheet sheet) {
-        List<Lesson> list = new ArrayList<Lesson>();
-        org.apache.poi.hssf.usermodel.HSSFRow row;
-        org.apache.poi.hssf.usermodel.HSSFCell cell;
-
-        int ROWS_COUNT = 240;   //todo Избавиться от магических чисел
-        int COLUMNS_COUNT = 60; //todo Избавиться от магических чисел
-        String[][] dataBase = new String[ROWS_COUNT][COLUMNS_COUNT];
-        // разбираем файл Excel в массив
-        for (int i = 0; i < ROWS_COUNT; i++) {
-            row = sheet.getRow(i + 1);
-            for (int j = 0; j < COLUMNS_COUNT; j++) {
-                cell = row.getCell(j);
-                if (cell != null) {
-                    switch (cell.getCellType()) {
-                        case HSSFCell.CELL_TYPE_STRING:
-                            dataBase[i][j] = cell.getStringCellValue().trim();
-                            break;
-                    }
-                }
-            }
-        }
-
-        // startLine - строка, где начинается "чистое" расписание. x и y - для обхода файла  "ДНИ"
-        int startLine = getStartRow(dataBase);
-        FooterInfo footer = getFooter(dataBase);
-        //todo ВЕРХНЯЯ НЕДЕЛЯ
-        //todo НИЖНЯЯ НЕДЕЛЯ
-        for (int y = 2; !endOfColumns(startLine, y, dataBase); y += 3) {
-            String group = getGroup(startLine, y, dataBase);
-            String groupName = getGroupName(startLine,y,dataBase);
-            Logger.debug(groupName);
-            if (group == null) break; //конец расписания, дальше столбцы не содержат групп
-
-            for (int x = startLine + 2; x < footer.minRow; x++) {
-                String lecture = dataBase[x][y];
-                if (notEmpty(lecture)) {
-                    String room = getRoom(x, y, dataBase);
-                    String instructor = getInstructor(x, y, dataBase);
-                    if (lecture.contains("\n") && room.contains("\n") && instructor.contains("")) {
-                        //siam twins
-                        String[] lecs = lecture.split("\n");
-                        String[] rooms = room.split("\n");
-                        String[] inst = instructor.split("\n");
-                        for (int i = 0; i < lecs.length; i++) {
-                            Lesson lesson = new Lesson();
-                            lesson.setGroupNumber(group);
-                            lesson.setGroupName(groupName);
-                            lesson.setDay(getDay(x, dataBase));
-                            lesson.setHours(getHours(x, dataBase));
-                            lesson.setLecture(lecs[i]);
-                            lesson.setInstructor(inst[i]);
-                            lesson.setRoom(rooms[i]);
-                            list.add(lesson);
-                        }
-                    } else {
-                        Lesson lesson = new Lesson();
-                        lesson.setGroupNumber(group);
-                        lesson.setGroupName(groupName);
-                        lesson.setDay(getDay(x, dataBase));
-                        lesson.setHours(getHours(x, dataBase));
-                        lesson.setLecture(lecture);
-                        lesson.setInstructor(instructor);
-                        lesson.setRoom(room);
-                        list.add(lesson);
-                    }
-                }
-            }
-        }
-        //различаем верхние и нижние недели
-        for (int i = 0; i < list.size() - 1; i++) {
-            Lesson lesson1 = list.get(i);
-            Lesson lesson2 = list.get(i + 1);
-            if (isUpperLowerWeekPair(lesson1, lesson2)) {
-               lesson1.setWeek(1);
-               lesson2.setWeek(2);;
-            } else {
-                lesson1.setWeek(0);
-            }
-        }
-
-        return list;
-    }
+    public abstract List<T> parseSheet(HSSFSheet sheet) throws Exception;
 
     private static boolean isUpperLowerWeekPair(Lesson lesson1, Lesson lesson2) {
         return Objects.equals(lesson1.getFromHours(), lesson2.getFromHours()) && Objects.equals(lesson1.getFromMinutes(), lesson2.getFromMinutes()) &&
@@ -209,11 +111,13 @@ public class Parser {
                     ret.minRow = row;
                     //find value of lower weak
                     ret.lower = findFirstRightValue(row, j+1, dataBase);
+                    if (ret.lower == null) ret.lower = value;
                 }
                 if(value!=null && value.toLowerCase().contains("верхняя")) {
                     ret.minRow = row;
                     //find value of lower weak
                     ret.upper = findFirstRightValue(row, j+1, dataBase);
+                    if (ret.upper == null) ret.upper = value;
                 }
                 if(ret.lower!=null && ret.upper != null) break;
             }
@@ -222,10 +126,12 @@ public class Parser {
     }
 
     private static String findFirstRightValue(int row, int i, String[][] dataBase) {
-        if (notEmpty(dataBase[row][i])) return dataBase[row][i]; else return findFirstRightValue(row, i+1, dataBase);
+        if (i >= dataBase[row].length || row >= dataBase.length) return null;
+        else if (notEmpty(dataBase[row][i])) return dataBase[row][i];
+        else return findFirstRightValue(row, i+1, dataBase);
     }
 
-    private static class FooterInfo {
+    public static class FooterInfo {
         int minRow;
         String upper;
         String lower;

@@ -7,7 +7,7 @@ import java.util.Calendar;
 import static java.util.Calendar.*;
 
 
-public class Lesson {
+public abstract class Lesson {
 
     private String groupNumber;
     private Integer dayOfWeek;

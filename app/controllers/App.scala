@@ -1,6 +1,8 @@
 package controllers
 
-import models.Lesson
+import java.util
+
+import models.{AbstractLesson, FSiRLesson, IMEILesson, Lesson}
 import play.Logger
 import play.api.data._
 import play.api.data.Forms._
@@ -23,9 +25,9 @@ object App extends Controller {
     )(FilterData.apply)(FilterData.unapply)
   )
 
-  def allGroups = Lesson.all().toList.map(lesson => lesson.getGroupNumber).distinct.sorted
+  def allGroups = new IMEILesson().all().toList.map(lesson => lesson.getGroupNumber).distinct.sorted
 
-  def allInstructors = Lesson.all().toList.map(lesson => lesson.getInstructor).distinct.sorted
+  def allInstructors = new IMEILesson().all().toList.map(lesson => lesson.getInstructor).distinct.sorted
 
   def groupSchedule() = Action {
     Ok("todo")
@@ -36,31 +38,31 @@ object App extends Controller {
     filterForm.bindFromRequest.fold(
       formWithErrors => {
         // binding failure, you retrieve the form containing errors:
-        val lessonList = Lesson.all()
+        val lessonList = new IMEILesson().all()
         BadRequest(views.html.index(formWithErrors, lessonList, allGroups))
       },
       userData => {
         userData match {
-          case FilterData(None, Nil) =>
-            val lessonList = Lesson.find.orderBy("dayOfWeek asc, fromHours asc").findList()
-            Ok(views.html.index(filterForm.fill(userData), lessonList))
-          case FilterData(Some(group), Nil) =>
-            val lessonList = Lesson.find.where().ilike("groupNumber", group).orderBy("dayOfWeek asc, fromHours asc").findList()
-            Ok(views.html.index(filterForm.fill(userData), lessonList))
-          case FilterData(None, instructors) =>
-            val lessonList = Lesson.find.orderBy("dayOfWeek asc, fromHours asc").findList().
-              filter(lesson => instructors.contains(lesson.getInstructor))
-            Ok(views.html.index(filterForm.fill(userData), lessonList))
-          case FilterData(Some(group), instructors) =>
-            val lessonList = Lesson.find.where().ilike("groupNumber", group).orderBy("dayOfWeek asc, fromHours asc")
-              .findList().filter(lesson => instructors.contains(lesson.getInstructor))
-            Ok(views.html.index(filterForm.fill(userData), lessonList))
+            case FilterData(None, Nil) =>
+                var lessonList = IMEILesson.find.orderBy("dayOfWeek asc, fromHours asc").findList()
+                Ok(views.html.index(filterForm.fill(userData), lessonList))
+            case FilterData(Some(group), Nil) =>
+              val lessonList = IMEILesson.find.where().ilike("groupNumber", group).orderBy("dayOfWeek asc, fromHours asc").findList()
+              Ok(views.html.index(filterForm.fill(userData), lessonList))
+            case FilterData(None, instructors) =>
+              val lessonList = IMEILesson.find.orderBy("dayOfWeek asc, fromHours asc").findList().
+                filter(lesson => instructors.contains(lesson.getInstructor))
+              Ok(views.html.index(filterForm.fill(userData), lessonList))
+            case FilterData(Some(group), instructors) =>
+              val lessonList = IMEILesson.find.where().ilike("groupNumber", group).orderBy("dayOfWeek asc, fromHours asc")
+                .findList().filter(lesson => instructors.contains(lesson.getInstructor))
+              Ok(views.html.index(filterForm.fill(userData), lessonList))
         }
       }
     )
   }
 
-  def lessonSorter(l1: Lesson, l2: Lesson): Boolean = {
+  def lessonSorter(l1: IMEILesson, l2: IMEILesson): Boolean = {
     (l1.getDayOfWeek < l2.getDayOfWeek())
   }
 }

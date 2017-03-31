@@ -1,7 +1,9 @@
 package controllers;
 
 import models.FSiRLesson;
+import models.IMEILesson;
 import models.Lesson;
+import models.PhysLesson;
 import play.*;
 import play.mvc.*;
 import views.html.*;
@@ -22,8 +24,8 @@ public class ClientAPI extends Controller {
     public static Result findLessons(String groupNumber, String faculty) {
         ObjectNode result = Json.newObject();
         if(faculty.equals("IMEI")) {
-            List<Lesson> lessonList;
-            lessonList = Lesson.find.where()
+            List<IMEILesson> lessonList;
+            lessonList = IMEILesson.find.where()
                     .ilike("groupNumber", "%" + groupNumber + "%").findList();
             JsonNode lessonsListJson = Json.toJson(lessonList);
             result.put("objects", lessonsListJson);
@@ -32,6 +34,12 @@ public class ClientAPI extends Controller {
             List<FSiRLesson> lessonList;
                 lessonList = FSiRLesson.find.where()
                         .ilike("groupNumber", "%" + groupNumber + "%").findList() ;
+            JsonNode lessonsListJson = Json.toJson(lessonList);
+            result.put("objects", lessonsListJson);
+        } else if (faculty.equals("Phys")) {
+            List<PhysLesson> lessonList;
+            lessonList = PhysLesson.find.where()
+                    .ilike("groupNumber", "%" + groupNumber + "%").findList() ;
             JsonNode lessonsListJson = Json.toJson(lessonList);
             result.put("objects", lessonsListJson);
         }
